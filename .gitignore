@@ -133,4 +133,7 @@ Android.bp
 # Local files
 *log*
 out/
-*sh
+clang/
+los-4.9-32/
+los-4.9-64/
+AnyKernel3/
