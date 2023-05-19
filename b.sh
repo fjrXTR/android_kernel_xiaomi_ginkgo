@@ -11,6 +11,8 @@ git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
 git clone --depth=1 https://github.com/sarthakroy2002/prebuilts_gcc_linux-x86_aarch64_aarch64-linaro-7 los-4.9-64
 git clone --depth=1 https://github.com/sarthakroy2002/linaro_arm-linux-gnueabihf-7.5 los-4.9-32
 
+rm -rf AnyKernel
+
 make O=out ARCH=arm64 vendor/ginkgo-perf_defconfig
 
 PATH="${PWD}/clang/bin:${PATH}:${PWD}/los-4.9-32/bin:${PATH}:${PWD}/los-4.9-64/bin:${PATH}" \
@@ -30,7 +32,7 @@ make -j$(nproc --all) O=out \
 
 function zupload()
 {
-git clone --depth=1 https://github.com/fjrXTR/AnyKernel3.git AnyKernel
+git clone --depth=1 https://github.com/fjrXTR/AnyKernel3.git AnyKernel -b ginkgo
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
 cd AnyKernel
 zip -r9 liquid-Shinomiya-kernel-v1.0-ginkgo.zip *
